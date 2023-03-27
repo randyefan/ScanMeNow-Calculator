@@ -11,7 +11,18 @@ class HomepageViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var resourceImage: UIImage?
+    let viewModel: HomepageViewModel
+    
+    // MARK: - Initializer
+    
+    init(viewModel: HomepageViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "HomepageViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - ViewController Lifecycle
     
@@ -83,7 +94,7 @@ extension HomepageViewController: UIImagePickerControllerDelegate & UINavigation
                 return
             }
             
-            resourceImage = image
+            viewModel.imageResources.send(image)
             
             dismiss(animated: true, completion: nil)
         case .photoLibrary:
@@ -91,7 +102,7 @@ extension HomepageViewController: UIImagePickerControllerDelegate & UINavigation
                 return
             }
             
-            resourceImage = selectedImage
+            viewModel.imageResources.send(selectedImage)
             
             dismiss(animated: true, completion: nil)
         default: break

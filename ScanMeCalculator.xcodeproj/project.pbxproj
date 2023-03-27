@@ -14,6 +14,10 @@
 		61C94A6729D163040006AD58 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A6529D163040006AD58 /* HomepageViewController.swift */; };
 		61C94A6829D163040006AD58 /* HomepageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C94A6629D163040006AD58 /* HomepageViewController.xib */; };
 		61C94A6B29D16C4C0006AD58 /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A6A29D16C4C0006AD58 /* FLEX */; };
+		61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A7229D18A310006AD58 /* HomepageViewModel.swift */; };
+		61C94A7529D192EC0006AD58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */; };
+		61C94A7829D194120006AD58 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A7729D194120006AD58 /* FirebaseInstallations */; };
+		61C94A7A29D194120006AD58 /* FirebaseMLModelDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,8 @@
 		61C94A5D29D1621C0006AD58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61C94A6529D163040006AD58 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		61C94A6629D163040006AD58 /* HomepageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomepageViewController.xib; sourceTree = "<group>"; };
+		61C94A7229D18A310006AD58 /* HomepageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewModel.swift; sourceTree = "<group>"; };
+		61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61C94A7A29D194120006AD58 /* FirebaseMLModelDownloader in Frameworks */,
 				61C94A6B29D16C4C0006AD58 /* FLEX in Frameworks */,
+				61C94A7829D194120006AD58 /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +69,7 @@
 				61C94A6429D162CD0006AD58 /* Core */,
 				61C94A6329D162BF0006AD58 /* Homepage */,
 				61C94A5D29D1621C0006AD58 /* Info.plist */,
+				61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */,
 			);
 			path = ScanMeCalculator;
 			sourceTree = "<group>";
@@ -97,6 +106,7 @@
 		61C94A7129D189CE0006AD58 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				61C94A7229D18A310006AD58 /* HomepageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			name = ScanMeCalculator;
 			packageProductDependencies = (
 				61C94A6A29D16C4C0006AD58 /* FLEX */,
+				61C94A7729D194120006AD58 /* FirebaseInstallations */,
+				61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */,
 			);
 			productName = ScanMeCalculator;
 			productReference = 61C94A4C29D1621B0006AD58 /* ScanMeCalculator.app */;
@@ -150,6 +162,7 @@
 			mainGroup = 61C94A4329D1621B0006AD58;
 			packageReferences = (
 				61C94A6929D16C4C0006AD58 /* XCRemoteSwiftPackageReference "FLEX" */,
+				61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 61C94A4D29D1621B0006AD58 /* Products */;
 			projectDirPath = "";
@@ -166,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61C94A5C29D1621C0006AD58 /* LaunchScreen.storyboard in Resources */,
+				61C94A7529D192EC0006AD58 /* GoogleService-Info.plist in Resources */,
 				61C94A6829D163040006AD58 /* HomepageViewController.xib in Resources */,
 				61C94A5929D1621C0006AD58 /* Assets.xcassets in Resources */,
 			);
@@ -178,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */,
 				61C94A5029D1621B0006AD58 /* AppDelegate.swift in Sources */,
 				61C94A5229D1621B0006AD58 /* SceneDelegate.swift in Sources */,
 				61C94A6729D163040006AD58 /* HomepageViewController.swift in Sources */,
@@ -578,6 +593,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -585,6 +608,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61C94A6929D16C4C0006AD58 /* XCRemoteSwiftPackageReference "FLEX" */;
 			productName = FLEX;
+		};
+		61C94A7729D194120006AD58 /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMLModelDownloader;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
