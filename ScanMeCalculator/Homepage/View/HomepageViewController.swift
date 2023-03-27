@@ -38,6 +38,7 @@ class HomepageViewController: UIViewController {
         
         setupNavbar()
         setupRightNavbarItem()
+        setupObserver()
     }
     
     // MARK: - Private Function
@@ -46,6 +47,13 @@ class HomepageViewController: UIViewController {
         viewModel.isSaveToDatabaseStorage.sink { [weak self] isSaveToDatabase in
             self?.databaseSwitch.isOn = isSaveToDatabase
         }
+        .store(in: &cancellables)
+        
+        viewModel.showAlertPublisher
+            .sink { [weak self] alertInfo in
+                guard let self = self else { return }
+                Alert.showBasic(title: alertInfo.title, message: alertInfo.message, vc: self)
+            }
         .store(in: &cancellables)
     }
     

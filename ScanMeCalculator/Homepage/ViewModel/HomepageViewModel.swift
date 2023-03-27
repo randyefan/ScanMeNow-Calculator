@@ -14,7 +14,12 @@ class HomepageViewModel {
     var isSaveToDatabaseStorage = CurrentValueSubject<Bool, Never>(true)
     var imageResources = CurrentValueSubject<(UIImage, UIImagePickerController.SourceType)?, Never>(nil)
     
+    var showAlertPublisher: AnyPublisher<(title: String, message: String), Never> {
+        showAlertSubject.eraseToAnyPublisher()
+    }
+    
     // Private Properties
+    private let showAlertSubject = PassthroughSubject<(title: String, message: String), Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initializer
@@ -64,15 +69,15 @@ class HomepageViewModel {
                 guard let input = result.0, let amount = result.1 else { return }
                 
                 // Handle Later
+                showAlertSubject.send((title: "Success", message: "Data Added"))
                 print("input \(input)")
                 print(amount)
             } else {
-                // Handle Later
-                print(recognizedText)
+                showAlertSubject.send((title: "Not found number/arithmetic to calculate", message: "\(recognizedText)"))
             }
         } catch {
             // Handle Later
-            print("Error: \(error)")
+            showAlertSubject.send((title: "Error", message: "\(error.localizedDescription)"))
         }
     }
     

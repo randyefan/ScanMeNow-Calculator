@@ -16,6 +16,7 @@
 		61C94A6B29D16C4C0006AD58 /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A6A29D16C4C0006AD58 /* FLEX */; };
 		61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A7229D18A310006AD58 /* HomepageViewModel.swift */; };
 		61C94A7529D192EC0006AD58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */; };
+		61C94A7C29D1BCAC0006AD58 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A7B29D1BCAC0006AD58 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		61C94A6629D163040006AD58 /* HomepageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomepageViewController.xib; sourceTree = "<group>"; };
 		61C94A7229D18A310006AD58 /* HomepageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewModel.swift; sourceTree = "<group>"; };
 		61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61C94A7B29D1BCAC0006AD58 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				61C94A4F29D1621B0006AD58 /* AppDelegate.swift */,
 				61C94A5129D1621B0006AD58 /* SceneDelegate.swift */,
+				61C94A7B29D1BCAC0006AD58 /* Alert.swift */,
 				61C94A5829D1621C0006AD58 /* Assets.xcassets */,
 				61C94A5A29D1621C0006AD58 /* LaunchScreen.storyboard */,
 			);
@@ -188,6 +191,7 @@
 				61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */,
 				61C94A5029D1621B0006AD58 /* AppDelegate.swift in Sources */,
 				61C94A5229D1621B0006AD58 /* SceneDelegate.swift in Sources */,
+				61C94A7C29D1BCAC0006AD58 /* Alert.swift in Sources */,
 				61C94A6729D163040006AD58 /* HomepageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
