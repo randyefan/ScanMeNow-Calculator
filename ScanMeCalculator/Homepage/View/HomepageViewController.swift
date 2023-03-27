@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 class HomepageViewController: UIViewController {
     
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var databaseSwitch: UISwitch!
+    
     // MARK: - Properties
+    private var cancellables = Set<AnyCancellable>()
     
     let viewModel: HomepageViewModel
     
@@ -35,6 +42,13 @@ class HomepageViewController: UIViewController {
     
     // MARK: - Private Function
     
+    private func setupObserver() {
+        viewModel.isSaveToDatabaseStorage.sink { [weak self] isSaveToDatabase in
+            self?.databaseSwitch.isOn = isSaveToDatabase
+        }
+        .store(in: &cancellables)
+    }
+    
     private func setupNavbar() {
         title = "Scan Me! Calculator"
         
@@ -54,6 +68,11 @@ class HomepageViewController: UIViewController {
         navigationItem.rightBarButtonItem = plusBarButtonItem
     }
     
+    // MARK: - @IBAction
+    
+    @IBAction func switchPressed(_ sender: Any) {
+        viewModel.isSaveToDatabaseStorage.value.toggle()
+    }
 }
 
 // MARK: - @objc Func

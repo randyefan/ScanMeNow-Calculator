@@ -11,6 +11,7 @@ import Vision
 
 class HomepageViewModel {
     // Public Properties
+    var isSaveToDatabaseStorage = CurrentValueSubject<Bool, Never>(true)
     var imageResources = CurrentValueSubject<(UIImage, UIImagePickerController.SourceType)?, Never>(nil)
     
     // Private Properties
