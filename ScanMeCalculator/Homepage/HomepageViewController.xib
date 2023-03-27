@@ -18,106 +18,25 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-L0-djd" userLabel="Theme View">
-                    <rect key="frame" x="8" y="75" width="377" height="85"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee4-EO-PPi">
-                            <rect key="frame" x="139.33333333333334" y="0.0" width="98.333333333333343" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpb-EL-sMq" userLabel="Red Color">
-                            <rect key="frame" x="132.66666666666666" y="29" width="48" height="48"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92f-Gx-NrU" userLabel="Checkmark Button">
-                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                            <constraints>
-                                <constraint firstItem="92f-Gx-NrU" firstAttribute="leading" secondItem="Bpb-EL-sMq" secondAttribute="leading" id="1aG-xr-DMF"/>
-                                <constraint firstAttribute="width" constant="48" id="KS3-DA-ZIM"/>
-                                <constraint firstItem="92f-Gx-NrU" firstAttribute="top" secondItem="Bpb-EL-sMq" secondAttribute="top" id="WfR-w4-2Ev"/>
-                                <constraint firstAttribute="bottom" secondItem="92f-Gx-NrU" secondAttribute="bottom" id="YAv-Uh-ksT"/>
-                                <constraint firstAttribute="height" constant="48" id="jgT-uY-k5e"/>
-                                <constraint firstAttribute="trailing" secondItem="92f-Gx-NrU" secondAttribute="trailing" id="v9n-KC-TPC"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="24"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ro-uX-lTZ" userLabel="Green Color">
-                            <rect key="frame" x="196.66666666666666" y="29" width="48" height="48"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUb-5G-sZG" userLabel="Checkmark Button">
-                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemGreenColor"/>
-                            <constraints>
-                                <constraint firstItem="WUb-5G-sZG" firstAttribute="leading" secondItem="4Ro-uX-lTZ" secondAttribute="leading" id="7Nj-ow-m6f"/>
-                                <constraint firstAttribute="width" constant="48" id="FFp-g7-Pe7"/>
-                                <constraint firstAttribute="trailing" secondItem="WUb-5G-sZG" secondAttribute="trailing" id="W5n-co-s3c"/>
-                                <constraint firstAttribute="height" constant="48" id="Z32-BD-7Lk"/>
-                                <constraint firstItem="WUb-5G-sZG" firstAttribute="top" secondItem="4Ro-uX-lTZ" secondAttribute="top" id="rYo-Yz-nhN"/>
-                                <constraint firstAttribute="bottom" secondItem="WUb-5G-sZG" secondAttribute="bottom" id="xfA-mQ-FnC"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="24"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="Bpb-EL-sMq" firstAttribute="top" secondItem="ee4-EO-PPi" secondAttribute="bottom" constant="8" id="CFN-te-kQA"/>
-                        <constraint firstItem="ee4-EO-PPi" firstAttribute="centerX" secondItem="q7G-L0-djd" secondAttribute="centerX" id="Cyu-Lx-rNs"/>
-                        <constraint firstAttribute="bottom" secondItem="4Ro-uX-lTZ" secondAttribute="bottom" constant="8" id="Ly9-6u-dhS"/>
-                        <constraint firstItem="4Ro-uX-lTZ" firstAttribute="leading" secondItem="q7G-L0-djd" secondAttribute="centerX" constant="8" id="OMe-DM-Nyq"/>
-                        <constraint firstItem="4Ro-uX-lTZ" firstAttribute="top" secondItem="ee4-EO-PPi" secondAttribute="bottom" constant="8" id="U3I-V1-Mca"/>
-                        <constraint firstItem="ee4-EO-PPi" firstAttribute="top" secondItem="q7G-L0-djd" secondAttribute="top" id="XKi-Bp-kRQ"/>
-                        <constraint firstItem="Bpb-EL-sMq" firstAttribute="trailing" secondItem="q7G-L0-djd" secondAttribute="centerX" constant="-8" id="qtL-dh-K9J"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QZw-61-d5M">
-                    <rect key="frame" x="8" y="184" width="377" height="610"/>
+                    <rect key="frame" x="8" y="67" width="377" height="727"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q7G-L0-djd" secondAttribute="trailing" constant="8" id="LZV-1N-zRa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QZw-61-d5M" secondAttribute="bottom" constant="24" id="NdR-w0-x2h"/>
-                <constraint firstItem="q7G-L0-djd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="amj-Mo-Kr8"/>
-                <constraint firstItem="QZw-61-d5M" firstAttribute="top" secondItem="q7G-L0-djd" secondAttribute="bottom" constant="24" id="eX6-fi-gRd"/>
+                <constraint firstItem="QZw-61-d5M" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Xbo-yD-98g"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QZw-61-d5M" secondAttribute="trailing" constant="8" id="kth-3e-oqw"/>
-                <constraint firstItem="q7G-L0-djd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="ldX-Qv-VBB"/>
                 <constraint firstItem="QZw-61-d5M" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="pzq-vV-Ein"/>
             </constraints>
             <point key="canvasLocation" x="91" y="-11"/>
         </view>
     </objects>
     <resources>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
