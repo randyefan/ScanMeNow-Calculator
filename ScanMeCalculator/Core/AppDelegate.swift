@@ -13,7 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        setupUIAppreance()
+        
         return true
     }
 
@@ -31,6 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func setupUIAppreance() {
+        #if GreenBuiltInCamera || GreenCameraRoll
+        UINavigationBar.appearance().tintColor = UIColor.systemGreen
+        UIButton.appearance().tintColor = UIColor.systemGreen
+        #elseif RedBuiltInCamera || RedCameraRoll
+        UIButton.appearance().tintColor = UIColor.red
+        UINavigationBar.appearance().tintColor = UIColor.red
+        #endif
+    }
 
 }
 
