@@ -37,9 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if GreenBuiltInCamera || GreenCameraRoll
         UINavigationBar.appearance().tintColor = UIColor.systemGreen
         UIButton.appearance().tintColor = UIColor.systemGreen
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGreen]
         #elseif RedBuiltInCamera || RedCameraRoll
         UIButton.appearance().tintColor = UIColor.red
         UINavigationBar.appearance().tintColor = UIColor.red
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         #endif
     }
 
