@@ -16,8 +16,6 @@
 		61C94A6B29D16C4C0006AD58 /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A6A29D16C4C0006AD58 /* FLEX */; };
 		61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A7229D18A310006AD58 /* HomepageViewModel.swift */; };
 		61C94A7529D192EC0006AD58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61C94A7429D192EC0006AD58 /* GoogleService-Info.plist */; };
-		61C94A7829D194120006AD58 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A7729D194120006AD58 /* FirebaseInstallations */; };
-		61C94A7A29D194120006AD58 /* FirebaseMLModelDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = 61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61C94A7A29D194120006AD58 /* FirebaseMLModelDownloader in Frameworks */,
 				61C94A6B29D16C4C0006AD58 /* FLEX in Frameworks */,
-				61C94A7829D194120006AD58 /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +125,6 @@
 			name = ScanMeCalculator;
 			packageProductDependencies = (
 				61C94A6A29D16C4C0006AD58 /* FLEX */,
-				61C94A7729D194120006AD58 /* FirebaseInstallations */,
-				61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */,
 			);
 			productName = ScanMeCalculator;
 			productReference = 61C94A4C29D1621B0006AD58 /* ScanMeCalculator.app */;
@@ -162,7 +156,6 @@
 			mainGroup = 61C94A4329D1621B0006AD58;
 			packageReferences = (
 				61C94A6929D16C4C0006AD58 /* XCRemoteSwiftPackageReference "FLEX" */,
-				61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 61C94A4D29D1621B0006AD58 /* Products */;
 			projectDirPath = "";
@@ -593,14 +586,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -608,16 +593,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61C94A6929D16C4C0006AD58 /* XCRemoteSwiftPackageReference "FLEX" */;
 			productName = FLEX;
-		};
-		61C94A7729D194120006AD58 /* FirebaseInstallations */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseInstallations;
-		};
-		61C94A7929D194120006AD58 /* FirebaseMLModelDownloader */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61C94A7629D194120006AD58 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMLModelDownloader;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

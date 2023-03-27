@@ -94,7 +94,7 @@ extension HomepageViewController: UIImagePickerControllerDelegate & UINavigation
                 return
             }
             
-            viewModel.imageResources.send(image)
+            viewModel.imageResources.send((image, picker.sourceType))
             
             dismiss(animated: true, completion: nil)
         case .photoLibrary:
@@ -102,7 +102,7 @@ extension HomepageViewController: UIImagePickerControllerDelegate & UINavigation
                 return
             }
             
-            viewModel.imageResources.send(selectedImage)
+            viewModel.imageResources.send((selectedImage, picker.sourceType))
             
             dismiss(animated: true, completion: nil)
         default: break
