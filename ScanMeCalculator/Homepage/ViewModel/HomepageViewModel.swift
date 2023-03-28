@@ -11,15 +11,16 @@ import Vision
 
 class HomepageViewModel {
     // Public Properties
+    var inputResultData = PassthroughSubject<[InputResult], Never>()
     var isSaveToDatabaseStorage = CurrentValueSubject<Bool, Never>(true)
     var imageResources = CurrentValueSubject<(UIImage, UIImagePickerController.SourceType)?, Never>(nil)
     
-    var showAlertPublisher: AnyPublisher<(title: String, message: String), Never> {
+    var showAlertPublisher: AnyPublisher<(title: String, message: String, action: (() -> Void)?), Never> {
         showAlertSubject.eraseToAnyPublisher()
     }
     
     // Private Properties
-    private let showAlertSubject = PassthroughSubject<(title: String, message: String), Never>()
+    private let showAlertSubject = PassthroughSubject<(title: String, message: String, action: (() -> Void)?), Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Initializer
@@ -40,6 +41,28 @@ class HomepageViewModel {
             self?.performCaptureArithmaticByImage(image: imageResources.0, sourceType: imageResources.1)
         }
         .store(in: &cancellables)
+    }
+    
+    private func handleStoreData(input: String, result: Double) {
+        if isSaveToDatabaseStorage.value {
+            CoreDataManager.shared.saveInputResult(input: input, result: result)
+            
+            // Alert
+            showAlertSubject.send((title: "Success",
+                                   message: "Data Added",
+                                   action: { [weak self] in
+                self?.convertCoreDataToDomain()
+            }))
+        } else {
+            // Handle Later
+        }
+    }
+    
+    private func convertCoreDataToDomain() {
+        let inputResultCoreData = CoreDataManager.shared.fetchInputResultData()
+        let inputResult = inputResultCoreData.map({ InputResult(input: $0.inputCoreData ?? "", result: $0.resultCoreData) })
+        
+        inputResultData.send(inputResult)
     }
     
     // MARK: - Recognition Text Func
@@ -67,17 +90,14 @@ class HomepageViewModel {
             
             if let result = preProcessingResponse(text: recognizedText) {
                 guard let input = result.0, let amount = result.1 else { return }
-                
-                // Handle Later
-                showAlertSubject.send((title: "Success", message: "Data Added"))
-                print("input \(input)")
-                print(amount)
+                handleStoreData(input: input, result: amount)
             } else {
-                showAlertSubject.send((title: "Not found number/arithmetic to calculate", message: "\(recognizedText)"))
+                showAlertSubject.send((title: "Not found number/arithmetic to calculate",
+                                       message: "\(recognizedText)",
+                                       action: nil))
             }
         } catch {
-            // Handle Later
-            showAlertSubject.send((title: "Error", message: "\(error.localizedDescription)"))
+            showAlertSubject.send((title: "Error", message: "\(error.localizedDescription)", action: nil))
         }
     }
     

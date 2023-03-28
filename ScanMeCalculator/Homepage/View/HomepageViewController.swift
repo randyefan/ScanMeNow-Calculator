@@ -52,7 +52,13 @@ class HomepageViewController: UIViewController {
         viewModel.showAlertPublisher
             .sink { [weak self] alertInfo in
                 guard let self = self else { return }
-                Alert.showBasic(title: alertInfo.title, message: alertInfo.message, vc: self)
+                Alert.showBasic(title: alertInfo.title, message: alertInfo.message, vc: self, handler: alertInfo.action)
+            }
+        .store(in: &cancellables)
+        
+        viewModel.inputResultData
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
             }
         .store(in: &cancellables)
     }
@@ -94,7 +100,7 @@ extension HomepageViewController {
             imagePicker.sourceType = .camera
             self.present(imagePicker, animated: true, completion: nil)
         } else {
-            // Handle Error
+            Alert.showBasic(title: "Error", message: "There is no camera detected", vc: self)
         }
         #elseif GreenCameraRoll || RedCameraRoll
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -104,7 +110,7 @@ extension HomepageViewController {
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
         } else {
-            // Handle Error
+            Alert.showBasic(title: "Error", message: "Can't access camera roll", vc: self)
         }
         #endif
     }
