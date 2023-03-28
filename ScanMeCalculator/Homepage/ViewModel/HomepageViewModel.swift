@@ -5,6 +5,7 @@
 //  Created by Randy Efan Jayaputra on 27/03/23.
 //
 
+import CryptoSwift
 import Combine
 import UIKit
 import Vision
@@ -60,7 +61,12 @@ class HomepageViewModel {
                 self?.fetchCoreDataToDomain()
             }))
         } else {
-            // Handle Later
+            if saveToEncryptedFile(expression: input, result: result) {
+                let location = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                showAlertSubject.send((title: "Success",
+                                       message: "Successfully encrypted and wrote data to file \(location?.absoluteString ?? "")/encryptedFile.bin",
+                                       action: nil))
+            }
         }
     }
     
@@ -69,6 +75,30 @@ class HomepageViewModel {
         let inputResult = inputResultCoreData.map({ InputResult(input: $0.inputCoreData ?? "", result: $0.resultCoreData) })
         
         inputResultData.send(inputResult)
+    }
+    
+    // MARK: - Save to encrypted file Func
+    
+    private func saveToEncryptedFile(expression: String, result: Double) -> Bool {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access Documents directory")
+        }
+        
+        let encryptedFilePath = "encryptedFile.bin"
+        let encryptedFileURL = URL(string: documentsDirectory.appendingPathComponent(encryptedFilePath).absoluteString)!
+        do {
+            let encryptedData = (expression + " = " + "\(result)").AESCBCEncrypt(secretKey: "I4FE9peuUTpAXaIt",
+                                                                                 ivKey: "1234567890123456",
+                                                                                 padding: .pkcs7) ?? ""
+            try encryptedData.data(using: .utf8)!.write(to: encryptedFileURL)
+            print("Successfully encrypted and wrote data to file \(encryptedFilePath)")
+            return true
+        } catch {
+            showAlertSubject.send((title: "Error",
+                                   message: "Failed to create an encrypted file: \(error.localizedDescription)",
+                                   action: nil))
+            return false
+        }
     }
     
     // MARK: - Recognition Text Func

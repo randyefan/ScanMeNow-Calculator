@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class Alert {
     class func showBasic(title: String, message: String, vc: UIViewController, handler: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

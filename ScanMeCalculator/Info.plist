@@ -19,6 +19,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Give me access to the camera to calculate the number</string>
 </dict>
