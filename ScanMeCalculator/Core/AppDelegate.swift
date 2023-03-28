@@ -35,12 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupUIAppreance() {
         #if GreenBuiltInCamera || GreenCameraRoll
+        UITableViewCell.appearance().tintColor = UIColor.systemGreen
         UISwitch.appearance().onTintColor = UIColor.systemGreen
         UINavigationBar.appearance().tintColor = UIColor.systemGreen
         UIButton.appearance().tintColor = UIColor.systemGreen
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGreen]
         #elseif RedBuiltInCamera || RedCameraRoll
-        UISwitch.appearance().onTintColor = UIColor.systemRed
+        UITableViewCell.appearance().tintColor = UIColor.red
+        UISwitch.appearance().onTintColor = UIColor.red
         UIButton.appearance().tintColor = UIColor.red
         UINavigationBar.appearance().tintColor = UIColor.red
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]

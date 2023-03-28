@@ -12,6 +12,8 @@
 		612170A829D2A96200D92889 /* InputResultCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612170A629D2A96200D92889 /* InputResultCoreData+CoreDataClass.swift */; };
 		612170A929D2A96200D92889 /* InputResultCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612170A729D2A96200D92889 /* InputResultCoreData+CoreDataProperties.swift */; };
 		612170AB29D2A9A500D92889 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612170AA29D2A9A500D92889 /* CoreDataManager.swift */; };
+		612170B329D2C90A00D92889 /* InputResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612170B129D2C90A00D92889 /* InputResultCell.swift */; };
+		612170B429D2C90A00D92889 /* InputResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 612170B229D2C90A00D92889 /* InputResultCell.xib */; };
 		61C94A5029D1621B0006AD58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A4F29D1621B0006AD58 /* AppDelegate.swift */; };
 		61C94A5229D1621B0006AD58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C94A5129D1621B0006AD58 /* SceneDelegate.swift */; };
 		61C94A5929D1621C0006AD58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61C94A5829D1621C0006AD58 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		612170A629D2A96200D92889 /* InputResultCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InputResultCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		612170A729D2A96200D92889 /* InputResultCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InputResultCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		612170AA29D2A9A500D92889 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		612170B129D2C90A00D92889 /* InputResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputResultCell.swift; sourceTree = "<group>"; };
+		612170B229D2C90A00D92889 /* InputResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputResultCell.xib; sourceTree = "<group>"; };
 		61C94A4C29D1621B0006AD58 /* ScanMeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScanMeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C94A4F29D1621B0006AD58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61C94A5129D1621B0006AD58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 				612170AA29D2A9A500D92889 /* CoreDataManager.swift */,
 			);
 			path = "CoreData Manager";
+			sourceTree = "<group>";
+		};
+		612170AC29D2C8CE00D92889 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612170B129D2C90A00D92889 /* InputResultCell.swift */,
+				612170B229D2C90A00D92889 /* InputResultCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		61C94A4329D1621B0006AD58 = {
@@ -127,6 +140,7 @@
 		61C94A7029D189CA0006AD58 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				612170AC29D2C8CE00D92889 /* Cell */,
 				61C94A6529D163040006AD58 /* HomepageViewController.swift */,
 				61C94A6629D163040006AD58 /* HomepageViewController.xib */,
 			);
@@ -205,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612170B429D2C90A00D92889 /* InputResultCell.xib in Resources */,
 				61C94A5C29D1621C0006AD58 /* LaunchScreen.storyboard in Resources */,
 				61C94A7529D192EC0006AD58 /* GoogleService-Info.plist in Resources */,
 				61C94A6829D163040006AD58 /* HomepageViewController.xib in Resources */,
@@ -219,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612170B329D2C90A00D92889 /* InputResultCell.swift in Sources */,
 				612170A829D2A96200D92889 /* InputResultCoreData+CoreDataClass.swift in Sources */,
 				61C94A7329D18A310006AD58 /* HomepageViewModel.swift in Sources */,
 				61C94A5029D1621B0006AD58 /* AppDelegate.swift in Sources */,

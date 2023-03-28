@@ -33,6 +33,12 @@ class HomepageViewModel {
         cancellables.forEach { $0.cancel() }
     }
     
+    // MARK: - Public Func
+    
+    func viewDidLoad() {
+        fetchCoreDataToDomain()
+    }
+    
     // MARK: - Private Function
     
     private func setupObserver() {
@@ -51,14 +57,14 @@ class HomepageViewModel {
             showAlertSubject.send((title: "Success",
                                    message: "Data Added",
                                    action: { [weak self] in
-                self?.convertCoreDataToDomain()
+                self?.fetchCoreDataToDomain()
             }))
         } else {
             // Handle Later
         }
     }
     
-    private func convertCoreDataToDomain() {
+    private func fetchCoreDataToDomain() {
         let inputResultCoreData = CoreDataManager.shared.fetchInputResultData()
         let inputResult = inputResultCoreData.map({ InputResult(input: $0.inputCoreData ?? "", result: $0.resultCoreData) })
         

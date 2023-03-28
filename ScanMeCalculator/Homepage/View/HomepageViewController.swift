@@ -15,8 +15,10 @@ class HomepageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var databaseSwitch: UISwitch!
     
+    @IBOutlet weak var centreLabel: UILabel!
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
+    private var data = [InputResult]()
     
     let viewModel: HomepageViewModel
     
@@ -39,6 +41,9 @@ class HomepageViewController: UIViewController {
         setupNavbar()
         setupRightNavbarItem()
         setupObserver()
+        setupTableView()
+        
+        viewModel.viewDidLoad()
     }
     
     // MARK: - Private Function
@@ -57,8 +62,10 @@ class HomepageViewController: UIViewController {
         .store(in: &cancellables)
         
         viewModel.inputResultData
-            .sink { [weak self] _ in
+            .sink { [weak self] data in
+                self?.data = data
                 self?.tableView.reloadData()
+                self?.tableView.isHidden = data.isEmpty
             }
         .store(in: &cancellables)
     }
@@ -80,6 +87,13 @@ class HomepageViewController: UIViewController {
         let plusBarButtonItem = UIBarButtonItem(customView: plusButton)
         
         navigationItem.rightBarButtonItem = plusBarButtonItem
+    }
+    
+    private func setupTableView() {
+        tableView.register(UINib(nibName: "InputResultCell", bundle: nil), forCellReuseIdentifier: "InputResultCell")
+        tableView.dataSource = self
+        
+        centreLabel.text = "The data is empty"
     }
     
     // MARK: - @IBAction
@@ -145,5 +159,18 @@ extension HomepageViewController: UIImagePickerControllerDelegate & UINavigation
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension HomepageViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InputResultCell", for: indexPath) as? InputResultCell
+        cell?.model = data[indexPath.row]
+        return cell ?? UITableViewCell(frame: .null)
     }
 }
