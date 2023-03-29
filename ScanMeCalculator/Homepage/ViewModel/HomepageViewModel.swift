@@ -104,36 +104,40 @@ class HomepageViewModel {
     // MARK: - Recognition Text Func
     
     private func performCaptureArithmaticByImage(image: UIImage, sourceType: UIImagePickerController.SourceType) {
-        lazy var textRecognitionRequest = VNRecognizeTextRequest(completionHandler: nil)
-        textRecognitionRequest.recognitionLevel = .accurate
-        textRecognitionRequest.usesLanguageCorrection = false
-        
-        guard let ciImage = CIImage(image: image) else {
-            return
-        }
-        
-        let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, orientation: sourceType == .camera ? .right : CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!, options: [:])
-        
-        do {
-            try imageRequestHandler.perform([textRecognitionRequest])
-            guard let results = textRecognitionRequest.results else {
+        DispatchQueue.global(qos: .userInitiated).async {
+            lazy var textRecognitionRequest = VNRecognizeTextRequest(completionHandler: nil)
+            textRecognitionRequest.recognitionLevel = .accurate
+            textRecognitionRequest.usesLanguageCorrection = false
+            
+            guard let ciImage = CIImage(image: image) else {
                 return
             }
             
-            let recognizedText = results.compactMap { observation in
-                observation.topCandidates(1).first?.string
-            }.joined(separator: "\n")
+            let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, orientation: sourceType == .camera ? .right : CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!, options: [:])
             
-            if let result = preProcessingResponse(text: recognizedText) {
-                guard let input = result.0, let amount = result.1 else { return }
-                handleStoreData(input: input, result: amount)
-            } else {
-                showAlertSubject.send((title: "Not found number/arithmetic to calculate",
-                                       message: "\(recognizedText)",
-                                       action: nil))
+            do {
+                try imageRequestHandler.perform([textRecognitionRequest])
+                guard let results = textRecognitionRequest.results else {
+                    return
+                }
+                
+                let recognizedText = results.compactMap { observation in
+                    observation.topCandidates(1).first?.string
+                }.joined(separator: "\n")
+                
+                DispatchQueue.main.async { [weak self] in
+                    if let result = self?.preProcessingResponse(text: recognizedText) {
+                        guard let input = result.0, let amount = result.1 else { return }
+                        self?.handleStoreData(input: input, result: amount)
+                    } else {
+                        self?.showAlertSubject.send((title: "Not found number/arithmetic to calculate",
+                                               message: "\(recognizedText)",
+                                               action: nil))
+                    }
+                }
+            } catch {
+                self.showAlertSubject.send((title: "Error", message: "\(error.localizedDescription)", action: nil))
             }
-        } catch {
-            showAlertSubject.send((title: "Error", message: "\(error.localizedDescription)", action: nil))
         }
     }
     
